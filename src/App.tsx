@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'typeface-roboto';
+
 import './App.css';
+import shopifyOrder from './data/shopify.json'
+import wooOrder from './data/woo.json'
+import { Order, SYSTEMTYPE } from "./components/Order";
+
+console.log('shopify', shopifyOrder)
+console.log('woo', wooOrder)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+		<div className="mt-10 flex flex-wrap">
+			<div className="flex-1">
+				<div className="max-w-103.5 mx-auto">
+					<h1 className="text-h6 mb-8">Warehouse Management System</h1>
+					<Order order={shopifyOrder} orderType={SYSTEMTYPE.WAREHOUSE} />
+					<hr className="my-8" />
+					<Order order={wooOrder} orderType={SYSTEMTYPE.WAREHOUSE} />
+				</div>
+			</div>
+			<div className="flex-1">
+				<div className="max-w-103.5 mx-auto">
+					<h1 className="text-h6 mb-8">Inventory Management System</h1>
+					<Order order={shopifyOrder} orderType={SYSTEMTYPE.INVENTORY} />
+					<hr className="my-8" />
+					<Order order={wooOrder} orderType={SYSTEMTYPE.INVENTORY} />
+				</div>
+			</div>
+		</div>
+  )
 }
 
 export default App;
